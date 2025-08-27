@@ -1,21 +1,29 @@
 ILI9341_CMD(0x36, 0x68); //旋转90度
+
 ILI9341_CMD(0x36, 0xA8); //旋转270度
 
-
 ------------
+配置部分
+
 sudo apt update
+
 sudo apt-get install libusb-1.0-0-dev
 
 mkdir -p ~/esp
+
 cd ~/esp
+
 git clone -b release/v4.4 --recursive https://github.com/espressif/esp-idf.git
 
 
 cd ~/esp/esp-idf
+
 ./install.sh
+
 ./install.sh esp32s3
 
  . ./export.sh
+
 cd /workspaces/retro-go/
 
 //
@@ -25,27 +33,38 @@ python rg_tool.py build-img --target=esp32s3-devkit-c
 python rg_tool.py release  --target=esp32s3-devkit-c
 
 
-
 esptool --port COM15 -b 1152000 write_flash --flash_size detect 0x0 retro-go_619e7_esp32s3-devkit-c.img
+
 esptool --port COM15 -b 1152000 write_flash --flash_size detect 0x0 retro-go_619e7-dirty_esp32s3-devkit-c.img
 
 esptool --port COM15 -b 2000000 write_flash --flash_size detect 0x0 retro-go_619e7-dirty_esp32s3-devkit-c.img
 
 ------------
 folder 目录， 访问一下， 就会自动生成
-  nes
-  snes
-  gb
-  gbc
-  gw  game & watch
-  sms sega master system
-  gg  game gear
-  md  genesis col coleco vision
-  pce pcengne
-  lnx lynx
-  doom wad后缀 doom
-  msx msx
 
+  nes
+
+  snes
+
+  gb
+
+  gbc
+
+  gw  game & watch
+
+  sms sega master system
+
+  gg  game gear
+
+  md  genesis col coleco vision
+
+  pce pcengne
+
+  lnx lynx
+
+  doom wad后缀 doom
+
+  msx msx
 
 ------------
 
