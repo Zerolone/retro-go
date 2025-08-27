@@ -33,11 +33,58 @@ python rg_tool.py build-img --target=esp32s3-devkit-c
 python rg_tool.py release  --target=esp32s3-devkit-c
 
 
-esptool --port COM15 -b 1152000 write_flash --flash_size detect 0x0 retro-go_619e7_esp32s3-devkit-c.img
 
+
+cd ~/esp/esp-idf
+
+ . ./export.sh
+
+cd /workspaces/retro-go/
+
+//新的
+
+python rg_tool.py build-img --target=esp32s3-my
+
+
+esptool --port COM15 -b 1152000 write_flash --flash_size detect 0x0 retro-go_619e7_esp32s3-devkit-c.img
 esptool --port COM15 -b 1152000 write_flash --flash_size detect 0x0 retro-go_619e7-dirty_esp32s3-devkit-c.img
 
-esptool --port COM15 -b 2000000 write_flash --flash_size detect 0x0 retro-go_619e7-dirty_esp32s3-devkit-c.img
+#老的配置，
+esptool --port COM15 -b 1152000 write_flash --flash_size detect 0x0 retro-go_619e7-dirty_esp32s3-devkit-c-ESP32S3Cam.img
+
+#新的配置 esp32s3-my
+esptool --port COM15 erase_flash
+esptool --port COM15 -b 1152000 write_flash --flash_size detect 0x0 retro-go_1bcac-dirty_esp32s3-my.img
+
+esptool --port COM15 -b 921600 write_flash --flash_size detect 0x0 retro-go_esp32s3-st7789v-v1.0-1-g8e5bb_esp32s3-devkit-c.img
+
+将3引脚改成38
+esptool --port COM15 -b 2000000 write_flash --flash_size detect 0x0 esp32s3my-3-38.img
+
+将48改成42， 47引脚改成41
+esptool --port COM15 -b 2000000 write_flash --flash_size detect 0x0 esp32s3my-48-42-47-41.img
+
+
+将LCD_CLK改成20， LCD_DC引脚改成19
+esptool --port COM15 -b 2000000 write_flash --flash_size detect 0x0 esp32s3my-48-20-47-19.img
+
+将46改成42， 45引脚改成41
+esptool --port COM15 -b 2000000 write_flash --flash_size detect 0x0 esp32s3my-48-20-47-19.img
+
+将46改成42， 45引脚改成41
+esptool --port COM15 -b 2000000 write_flash --flash_size detect 0x0 esp32s3my-46-42-45-41.img
+
+将LCD_DC改47,LCD_CLK改48
+esptool --port COM15 -b 2000000 write_flash --flash_size detect 0x0 esp32s3my-19-47-20-48.img
+
+将LCD_DC改1,LCD_CLK改2
+esptool --port COM15 -b 2000000 write_flash --flash_size detect 0x0 esp32s3my-LCD-2-1.img
+
+将LCD_DC改6,LCD_CLK改7，上改2，右改1
+esptool --port COM15 -b 2000000 write_flash --flash_size detect 0x0 esp32s3my-LCD-7-6.img
+
+
+
 
 ------------
 folder 目录， 访问一下， 就会自动生成
