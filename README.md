@@ -141,9 +141,13 @@ A 是 CRC32 编码的第一个字符。
 ## BIOS 文件
 
 部分模拟器支持加载 BIOS（基本输入输出系统）文件。此类文件应按以下路径放置：
+
 GB：/retro-go/bios/gb_bios.bin
+
 GBC：/retro-go/bios/gbc_bios.bin
+
 FDS：/retro-go/bios/fds_bios.bin
+
 MSX：在 /retro-go/bios/msx/ 文件夹中放入以下文件：MSX.ROM、MSX2.ROM、MSX2EXT.ROM、MSX2P.ROM、MSX2PEXT.ROM、FMPAC.ROM、DISK.ROM、MSXDOS2.ROM、PAINTER.ROM、KANJI.ROM
 
 ## Game & Watch
