@@ -90,22 +90,34 @@ esptool --port COM15 -b 2000000 write_flash --flash_size detect 0x0 esp32s3my-LC
 folder 目录， 访问一下， 就会自动生成
 
   nes
-  gb
-  gbc
 
-基本上没必要的
-  snes
-  gw  game & watch
-  sms sega master system
-  gg  game gear
+  gb
+
+  gbc
 
   md  genesis col coleco vision
 
   pce pcengne
-
-  lnx lynx
+    炸弹人
+    https://www.wlgooo.com/tag/pce%E6%B1%89%E5%8C%96
+    https://tieba.baidu.com/p/7723914542
 
   doom wad后缀 doom
+    https://freedoom.github.io/
+    https://www.bilibili.com/opus/785094660135583809
+
+
+
+基本上没必要的
+  snes
+
+  gw  game & watch
+
+  sms sega master system
+
+  gg  game gear
+
+  lnx lynx
 
   msx msx
 
