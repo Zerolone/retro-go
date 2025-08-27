@@ -115,54 +115,43 @@ folder 目录， 访问一下， 就会自动生成
 
 ------------
 
-# Table of contents
-- [Installation](#installation)
-- [Usage](#usage)
-- [Issues](#issues)
+# 目录
+- [用法](#用法)
+- [问题](#问题)
 - [Development](#development)
 - [Acknowledgements](#acknowledgements)
 - [License](#license)
 
+# 用法
 
-# Installation
-### Other devices
-  1. Download the .img for your device from the [release page](https://github.com/ducalex/retro-go/releases/).
-  2. Connect your device to a computer with a USB cable.
-  3. Flash the image with esptool:
-     - [Command line](https://github.com/espressif/esptool/releases/): Run `esptool.py write_flash --flash_size detect 0x0 retro-go_*.img`
-     - [Web version](https://espressif.github.io/esptool-js/): Connect your device, click Erase Flash, then select your .img file and set address to 0x0, finally click Program)
+## 游戏封面 / 图片素材
+游戏封面应放置在 SD 卡根目录下的 romart 文件夹中。你可以在[此处](https://github.com/ducalex/retro-go-covers)获取一个预制素材包。Retro-Go 同样兼容旧版的 Go-Play romart 素材包。
 
-Your particular device may require extra steps (like holding a button during power up) or different esptool flags or a special cable. If the above steps fail, you might need to ask the manufacturer for instructions on how to flash new firmware!
+若需添加缺失的封面图片，可创建一张 PNG 格式图片（尺寸为 160x168 像素，8 位色深）。系统支持以下两种命名规则：
 
-If your device is not already supported or if a prebuilt version isn't available for it you can check the [development section](#Development) for more information on how to build for your device.
+基于文件名：/romart/nes/Super Mario.png（注意：此处不包含游戏 ROM 文件的扩展名）
+基于 CRC32 编码：/romart/nes/A/ABCDE123.png，其中：
+nes 与 ROM 文件所在文件夹名称一致；
+ABCDE123 是该游戏的 CRC32 编码（在启动器中按下 A 键 -> 选择 “属性” 即可查看）；
+A 是 CRC32 编码的第一个字符。
 
-
-# Usage
-
-## Game covers / artwork
-Game covers should be placed in the `romart` folder at the base of your sd card. You can obtain a pre-made pack [here](https://github.com/ducalex/retro-go-covers). Retro-Go is also compatible with the older Go-Play romart pack.
-
-You can add missing cover art by creating a PNG image (160x168, 8bit). Two naming schemes are supported:
-- Filename-based: `/romart/nes/Super Mario.png` (notice the rom extension is *not* included)
-- CRC32-based: `/romart/nes/A/ABCDE123.png` where `nes` is the same as the rom folder, and `ABCDE123` is the CRC32 of the game (press A -> Properties in the launcher to find it), and `A` is the first character of the CRC32
-
-_Note: CRC32-based, which is what is used in the pre-made pack, is much slower than name-based! This type is useful because filenames vary greatly despite having identical CRCs, but if you generate your own art I suggest you use filename-based format and delete all CRC-based art from your SD Card to improve responsiveness._
+注：预制素材包采用的 “基于 CRC32 编码” 命名方式，其加载速度远慢于 “基于文件名” 的方式！这种命名方式的优势在于：即使不同文件的文件名差异很大，只要它们的 CRC32 编码相同（即文件内容一致），就能匹配到正确封面。但如果你是自行制作封面图片，建议使用 “基于文件名” 的命名格式，并删除 SD 卡中所有基于 CRC32 编码命名的封面文件，以提升系统响应速度。
 
 
-## BIOS files
-Some emulators support loading a BIOS. The files should be placed as follows:
-- GB: `/retro-go/bios/gb_bios.bin`
-- GBC: `/retro-go/bios/gbc_bios.bin`
-- FDS: `/retro-go/bios/fds_bios.bin`
-- MSX: In folder `/retro-go/bios/msx/` put: `MSX.ROM` `MSX2.ROM` `MSX2EXT.ROM` `MSX2P.ROM` `MSX2PEXT.ROM` `FMPAC.ROM` `DISK.ROM` `MSXDOS2.ROM` `PAINTER.ROM` `KANJI.ROM`
+## BIOS 文件
 
+部分模拟器支持加载 BIOS（基本输入输出系统）文件。此类文件应按以下路径放置：
+GB：/retro-go/bios/gb_bios.bin
+GBC：/retro-go/bios/gbc_bios.bin
+FDS：/retro-go/bios/fds_bios.bin
+MSX：在 /retro-go/bios/msx/ 文件夹中放入以下文件：MSX.ROM、MSX2.ROM、MSX2EXT.ROM、MSX2P.ROM、MSX2PEXT.ROM、FMPAC.ROM、DISK.ROM、MSXDOS2.ROM、PAINTER.ROM、KANJI.ROM
 
 ## Game & Watch
-The roms must be packed with [LCD-Game-Shrinker](https://github.com/bzhxx/LCD-Game-Shrinker) and a tutorial can be [found here](https://gist.github.com/DNA64/16fed499d6bd4664b78b4c0a9638e4ef).
 
+该平台的 ROM 文件必须使用[LCD-Game-Shrinker](https://github.com/bzhxx/LCD-Game-Shrinker) 工具进行打包处理，相关教程可参考[此处](https://gist.github.com/DNA64/16fed499d6bd4664b78b4c0a9638e4ef)。
 
 ## Wifi
-To use wifi you will need to create a `/retro-go/config/wifi.json` config file. You can define up to 4 different networks, then selectable in the menu. Its content should look like this:
+若要使用 WiFi 功能，你需要创建一个路径为 /retro-go/config/wifi.json 的配置文件。该文件最多可定义 4 个不同的网络，后续可在菜单中选择对应的网络进行连接。配置文件的内容格式应如下所示：
 
 ````json
 {
@@ -177,15 +166,13 @@ To use wifi you will need to create a `/retro-go/config/wifi.json` config file. 
 }
 ````
 
-### Time synchronization
-Time synchronization happens in the launcher immediately after a successful connection to the network.
-This is done via NTP by contacting `pool.ntp.org` and cannot be disabled at this time.
-Timezone can be configured in the launcher's options menu.
+### 时间同步
+成功连接网络后，启动器会立即进行时间同步。
+该同步过程通过网络时间协议（NTP）实现，具体是与 pool.ntp.org（公共 NTP 服务器池）进行通信，目前暂不支持关闭此功能。
+时区可在启动器的 “选项” 菜单中进行配置。
 
-### File manager
-You can find the IP of your device in the *about* menu of retro-go. Then on your PC navigate to
-http://192.168.x.x/ to access the file manager.
-
+### 文件管理器
+你可以在 Retro-Go 的 “关于”（About）菜单中找到设备的 IP 地址。之后在电脑上打开浏览器，在地址栏输入 http://192.168.x.x/（将 “192.168.x.x” 替换为实际找到的设备 IP 地址），即可访问文件管理器。
 
 ## External DAC (headphones)
 
@@ -210,34 +197,25 @@ which allows high quality audio through headphones. You can switch to it in the 
 </details>
 
 
-# Issues
+# 问题
 
-### Black screen / Boot loops
-Retro-Go typically detects and resolves application crashes and freezes automatically. However, if you do
-get stuck in a boot loop, you can hold `DOWN` while powering up the device to return to the launcher.
+### 黑屏 / 循环启动
+Retro-Go 通常会自动检测并解决应用程序崩溃与卡死问题。但如果设备确实陷入循环启动状态，你可以在开机时按住 “向下键（DOWN）”，以返回至启动器界面。
 
-### Sound quality
-The volume isn't correctly attenuated on the GO, resulting in upper volume levels that are too loud and
-lower levels that are distorted due to DAC resolution. A quick way to improve the audio is to cut one
-of the speaker wire and add a `33 Ohm (or thereabout)` resistor in series. Soldering is better but not
-required, twisting the wires tightly will work just fine.
-[A more involved solution can be seen here.](https://wiki.odroid.com/odroid_go/silent_volume)
-Alternatively you can use the headphones DAC mod mentioned earlier in this document.
+### 音质问题
+在 GO 设备上，音量调节无法实现精准衰减：这导致音量调至较高档位时声音过大，而调至较低档位时，又会因数模转换器（DAC）分辨率不足出现声音失真。
+若想快速改善音质，可剪断一根扬声器导线，并串联一个 “33 欧姆（左右）” 的电阻。焊接连接的效果更佳，但并非必需 —— 将导线紧密绞合也能正常工作。
+[更复杂的解决方案可参考此处。](https://wiki.odroid.com/odroid_go/silent_volume)
+此外，你也可以采用本文档前文提及的 “耳机数模转换器（DAC）改装方案”。
 
-### Game Boy SRAM *(aka Save/Battery/Backup RAM)*
-In Retro-Go, save states will provide you with the best and most reliable save experience. That being said, please
-read on if you need or want SRAM saves. The SRAM format is compatible with VisualBoyAdvance so it may be used to
-import or export saves.
+### Game Boy SRAM *(又称存档 / 电池 / 备份存储器)*
+在 Retro-Go 模拟器中，即时存档（Save States） 能为你提供最佳且最可靠的存档体验。话虽如此，若你需要或希望使用静态随机存取存储器（SRAM）存档，请继续阅读以下内容。该模拟器的 SRAM 存档格式与 VisualBoyAdvance（经典 GBA 模拟器，常简称为 VBA）兼容，因此可用于导入或导出存档文件。
+你可以在 “选项” 菜单中配置 SRAM 自动存档功能。延长存档延迟时间能减少游戏卡顿，但代价是若设备断电过快，可能会导致数据丢失。另需注意：当你恢复游戏（Resuming a Game） 时，若存在即时存档文件，Retro-Go 会优先加载该即时存档，而非 SRAM 存档。
 
-You can configure automatic SRAM saving in the options menu. A longer delay will reduce stuttering at the cost
-of losing data when powering down too quickly. Also note that when *resuming* a game, Retro-Go will give priority
-to a save state if present.
+### ZIP 压缩文件
+目前，Retro-Go 的大部分应用已支持 ZIP 压缩文件。一个 ZIP 压缩包内应当仅包含一个 ROM 文件，不得包含其他任何内容。此外，ZIP 格式的支持情况还取决于设备的可用内存；遗憾的是，对于部分设备而言，较大容量的 ROM 文件可能无法正常加载。
 
-### ZIP files
-Most Retro-Go applications now support ZIP files. ZIP archives should contain only one ROM file and nothing else. ZIP support also depends on available memory and larger ROMs may fail to load on some devices unfortunately.
-
-
-# Development
+# 开发
 If you wish to build or modify Retro-Go, you can find help in the following documents:
 
 - Build instructions in [BUILDING.md](BUILDING.md)
