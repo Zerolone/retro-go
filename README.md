@@ -1,5 +1,39 @@
+ILI9341_CMD(0x36, 0x68); //旋转90度
+ILI9341_CMD(0x36, 0xA8); //旋转270度
+
+
+------------
+sudo apt update
+sudo apt-get install libusb-1.0-0-dev
+
+mkdir -p ~/esp
+cd ~/esp
+git clone -b release/v4.4 --recursive https://github.com/espressif/esp-idf.git
+
+
+cd ~/esp/esp-idf
+./install.sh
+./install.sh esp32s3
+
+ . ./export.sh
+cd /workspaces/retro-go/
+
+//
+python rg_tool.py build-img --target=esp32s3-devkit-c
+
+//重新编译
+python rg_tool.py release  --target=esp32s3-devkit-c
+
+
+
+esptool --port COM15 -b 1152000 write_flash --flash_size detect 0x0 retro-go_619e7_esp32s3-devkit-c.img
+esptool --port COM15 -b 1152000 write_flash --flash_size detect 0x0 retro-go_619e7-dirty_esp32s3-devkit-c.img
+
+esptool --port COM15 -b 2000000 write_flash --flash_size detect 0x0 retro-go_619e7-dirty_esp32s3-devkit-c.img
+
+------------
+
 # Table of contents
-- [Description](#description)
 - [Installation](#installation)
 - [Usage](#usage)
 - [Issues](#issues)
@@ -7,51 +41,8 @@
 - [Acknowledgements](#acknowledgements)
 - [License](#license)
 
-# Description
-Retro-Go is a firmware to play retro games on ESP32-based devices (officially supported are
-ODROID-GO and MRGC-G32, check [this list for other devices](components/retro-go/README.md)).
-The project consists of a launcher and half a dozen applications that have been heavily
-optimized to reduce their cpu, memory, and flash needs without reducing compatibility!
-
-### Supported systems:
-- Nintendo: **NES, SNES (slow), Gameboy, Gameboy Color, Game & Watch**
-- Sega: **SG-1000, Master System, Mega Drive / Genesis, Game Gear**
-- Coleco: **Colecovision**
-- NEC: **PC Engine**
-- Atari: **Lynx**
-- Others: **DOOM** (including mods!)
-
-### Retro-Go features:
-- In-game menu
-- Favorites and recently played
-- GB color palettes, RTC adjust and save
-- NES color palettes, PAL roms, NSF support
-- More emulators and applications
-- Scaling and filtering options
-- Better performance and compatibility
-- Turbo Speed/Fast forward
-- Customizable launcher
-- Cover art and save state previews
-- Multiple save slots per game
-- Wifi file manager
-- And more!
-
-### Screenshots
-![Preview](assets/retro-go-preview.jpg)
-
 
 # Installation
-
-### ODROID-GO
-  1. Download `retro-go_1.x_odroid-go.fw` from the [release page](https://github.com/ducalex/retro-go/releases/) and copy it to `/odroid/firmware` on your sdcard.
-  2. Power up the device while holding down B.
-  3. Select retro-go in the files list and flash it.
-
-### MyRetroGameCase G32 (GBC)
-  1. Download `retro-go_1.x_mrgc-g32.fw` from the [release page](https://github.com/ducalex/retro-go/releases/) and copy it to `/espgbc/firmware` on your sdcard.
-  2. Power up the device while holding down MENU (the volume knob).
-  3. Select retro-go in the files list and flash it.
-
 ### Other devices
   1. Download the .img for your device from the [release page](https://github.com/ducalex/retro-go/releases/).
   2. Connect your device to a computer with a USB cable.
