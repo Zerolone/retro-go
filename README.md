@@ -32,6 +32,22 @@ esptool --port COM15 -b 1152000 write_flash --flash_size detect 0x0 retro-go_619
 esptool --port COM15 -b 2000000 write_flash --flash_size detect 0x0 retro-go_619e7-dirty_esp32s3-devkit-c.img
 
 ------------
+folder 目录， 访问一下， 就会自动生成
+  nes
+  snes
+  gb
+  gbc
+  gw  game & watch
+  sms sega master system
+  gg  game gear
+  md  genesis col coleco vision
+  pce pcengne
+  lnx lynx
+  doom wad后缀 doom
+  msx msx
+
+
+------------
 
 # Table of contents
 - [Installation](#installation)
