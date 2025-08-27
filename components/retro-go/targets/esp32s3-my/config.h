@@ -51,8 +51,8 @@
 #define RG_GAMEPAD_GPIO_MAP {\
     {RG_KEY_UP,     .num = GPIO_NUM_7,  .pullup = 1, .level = 0},\
     {RG_KEY_RIGHT,  .num = GPIO_NUM_6,  .pullup = 1, .level = 0},\
-    {RG_KEY_DOWN,   .num = GPIO_NUM_20, .pullup = 1, .level = 0},\
-    {RG_KEY_LEFT,   .num = GPIO_NUM_19, .pullup = 1, .level = 0},\
+    {RG_KEY_DOWN,   .num = GPIO_NUM_42, .pullup = 1, .level = 0},\
+    {RG_KEY_LEFT,   .num = GPIO_NUM_41, .pullup = 1, .level = 0},\
     {RG_KEY_SELECT, .num = GPIO_NUM_16, .pullup = 1, .level = 0},\
     {RG_KEY_START,  .num = GPIO_NUM_17, .pullup = 1, .level = 0},\
     {RG_KEY_MENU,   .num = GPIO_NUM_18, .pullup = 1, .level = 0},\
@@ -70,24 +70,25 @@
 
 
 // Status LED
-#define RG_GPIO_LED                 GPIO_NUM_38
+#define RG_GPIO_LED                 GPIO_NUM_2//38
 
 // SPI Display (back up working)
-#define RG_GPIO_LCD_MISO            GPIO_NUM_NC
-#define RG_GPIO_LCD_MOSI            GPIO_NUM_12
-#define RG_GPIO_LCD_CLK             GPIO_NUM_4
 #define RG_GPIO_LCD_CS              GPIO_NUM_14
-#define RG_GPIO_LCD_DC              GPIO_NUM_40
-#define RG_GPIO_LCD_BCKL            GPIO_NUM_39
 #define RG_GPIO_LCD_RST             GPIO_NUM_38
+#define RG_GPIO_LCD_DC              GPIO_NUM_47//19
+#define RG_GPIO_LCD_MOSI            GPIO_NUM_12
+#define RG_GPIO_LCD_CLK             GPIO_NUM_48//20
+#define RG_GPIO_LCD_BCKL            GPIO_NUM_39
 
+#define RG_GPIO_LCD_MISO            GPIO_NUM_NC
+
+#define RG_GPIO_SDSPI_CLK           GPIO_NUM_13
 #define RG_GPIO_SDSPI_MISO          GPIO_NUM_9
 #define RG_GPIO_SDSPI_MOSI          GPIO_NUM_11
-#define RG_GPIO_SDSPI_CLK           GPIO_NUM_13
 #define RG_GPIO_SDSPI_CS            GPIO_NUM_10
 
 // External I2S DAC
-#define RG_GPIO_SND_I2S_BCK         41
-#define RG_GPIO_SND_I2S_WS          42
-#define RG_GPIO_SND_I2S_DATA        40
+#define RG_GPIO_SND_I2S_BCK         2//41
+#define RG_GPIO_SND_I2S_WS          2//42
+#define RG_GPIO_SND_I2S_DATA        2//40
 // #define RG_GPIO_SND_AMP_ENABLE      18
