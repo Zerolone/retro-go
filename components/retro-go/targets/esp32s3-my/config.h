@@ -88,7 +88,7 @@
 #define RG_GPIO_SDSPI_CS            GPIO_NUM_10
 
 // External I2S DAC
-#define RG_GPIO_SND_I2S_BCK         3//41
-#define RG_GPIO_SND_I2S_WS          3//42
-#define RG_GPIO_SND_I2S_DATA        3//40
+#define RG_GPIO_SND_I2S_BCK         GPIO_NUM_43//41
+#define RG_GPIO_SND_I2S_WS          GPIO_NUM_44//42
+#define RG_GPIO_SND_I2S_DATA        GPIO_NUM_40//40
 // #define RG_GPIO_SND_AMP_ENABLE      18

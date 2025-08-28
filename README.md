@@ -32,8 +32,8 @@ python rg_tool.py build-img --target=esp32s3-devkit-c
 //重新编译
 python rg_tool.py release  --target=esp32s3-devkit-c
 
-
-
+-------------------------------
+//新的
 //打开codespace后的,添加路径
 cd ~/esp/esp-idf
 
@@ -41,11 +41,9 @@ cd ~/esp/esp-idf
 
 cd /workspaces/retro-go/
 
-//新的
-
 python rg_tool.py build-img --target=esp32s3-my
 
-
+-------------------------------
 esptool --port COM15 -b 1152000 write_flash --flash_size detect 0x0 retro-go_619e7_esp32s3-devkit-c.img
 esptool --port COM15 -b 1152000 write_flash --flash_size detect 0x0 retro-go_619e7-dirty_esp32s3-devkit-c.img
 
