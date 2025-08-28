@@ -51,8 +51,8 @@
 #define RG_GAMEPAD_GPIO_MAP {\
     {RG_KEY_UP,     .num = GPIO_NUM_2,  .pullup = 1, .level = 0},\
     {RG_KEY_RIGHT,  .num = GPIO_NUM_1,  .pullup = 1, .level = 0},\
-    {RG_KEY_DOWN,   .num = GPIO_NUM_42, .pullup = 1, .level = 0},\
-    {RG_KEY_LEFT,   .num = GPIO_NUM_41, .pullup = 1, .level = 0},\
+    {RG_KEY_DOWN,   .num = GPIO_NUM_20, .pullup = 1, .level = 0},\
+    {RG_KEY_LEFT,   .num = GPIO_NUM_19, .pullup = 1, .level = 0},\
     {RG_KEY_SELECT, .num = GPIO_NUM_16, .pullup = 1, .level = 0},\
     {RG_KEY_START,  .num = GPIO_NUM_17, .pullup = 1, .level = 0},\
     {RG_KEY_MENU,   .num = GPIO_NUM_18, .pullup = 1, .level = 0},\
