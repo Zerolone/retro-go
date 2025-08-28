@@ -91,11 +91,25 @@ folder 目录， 访问一下， 就会自动生成
 
   nes
 
-  snes
-
   gb
 
   gbc
+
+  md  genesis col coleco vision
+
+  pce pcengne
+    炸弹人
+    https://www.wlgooo.com/tag/pce%E6%B1%89%E5%8C%96
+    https://tieba.baidu.com/p/7723914542
+
+  doom wad后缀 doom
+    https://freedoom.github.io/
+    https://www.bilibili.com/opus/785094660135583809
+
+
+
+基本上没必要的
+  snes
 
   gw  game & watch
 
@@ -103,13 +117,7 @@ folder 目录， 访问一下， 就会自动生成
 
   gg  game gear
 
-  md  genesis col coleco vision
-
-  pce pcengne
-
   lnx lynx
-
-  doom wad后缀 doom
 
   msx msx
 
