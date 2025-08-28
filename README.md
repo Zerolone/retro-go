@@ -34,7 +34,7 @@ python rg_tool.py release  --target=esp32s3-devkit-c
 
 
 
-//打开codespace后的
+//打开codespace后的,添加路径
 cd ~/esp/esp-idf
 
  . ./export.sh
