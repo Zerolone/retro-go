@@ -93,8 +93,10 @@ esptool --port COM15 -b 2000000 write_flash --flash_size detect 0x0 esp32s3my-So
 esptool --port COM15 -b 2000000 write_flash --flash_size detect 0x0 esp32s3my-NoStatus.img
 
 #声音模块接线43-44交换
-esptool --port COM15 -b 2000000 write_flash --flash_size detect 0x0 esp32s3my-Sound3.img
+esptool --port COM2 -b 921600 write_flash --flash_size detect 0x0 esp32s3my-Sound3.img
 
+#旋转屏幕
+esptool --port COM2 -b 921600 write_flash --flash_size detect 0x0 esp32s3my-role.img
 ------------
 folder 目录， 访问一下， 就会自动生成
 

@@ -34,7 +34,7 @@
     ILI9341_CMD(0xC1, 0x12);                 /* Power control   //SAP[2:0];BT[3:0] */                            \
     ILI9341_CMD(0xC5, 0x32, 0x3C);           /* VCM control */                                                   \
     ILI9341_CMD(0xC7, 0x91);                 /* VCM control2 */                                                  \
-    ILI9341_CMD(0x36, 0xA8);                 /* Memory Access Control  (MX|MV|BGR) */                            \
+    ILI9341_CMD(0x36, 0x68);                 /* Memory Access Control  (MX|MV|BGR) */                            \
     ILI9341_CMD(0xB1, 0x00, 0x10);           /* Frame Rate Control (1B=70, 1F=61, 10=119) */                     \
     ILI9341_CMD(0xB6, 0x0A, 0xA2);           /* Display Function Control */                                      \
     ILI9341_CMD(0xF6, 0x01, 0x30);                                                                               \
@@ -70,7 +70,7 @@
 
 
 // Status LED
-//#define RG_GPIO_LED                 GPIO_NUM_2//38
+#define RG_GPIO_LED                 GPIO_NUM_21//38
 
 // SPI Display (back up working)
 #define RG_GPIO_LCD_CS              GPIO_NUM_14
@@ -88,7 +88,7 @@
 #define RG_GPIO_SDSPI_CS            GPIO_NUM_10
 
 // External I2S DAC
-#define RG_GPIO_SND_I2S_BCK         GPIO_NUM_44//41 BCLK
-#define RG_GPIO_SND_I2S_WS          GPIO_NUM_43//42 LRC
+#define RG_GPIO_SND_I2S_BCK         GPIO_NUM_44//41 BCLK TX
+#define RG_GPIO_SND_I2S_WS          GPIO_NUM_43//42 LRC  RX
 #define RG_GPIO_SND_I2S_DATA        GPIO_NUM_40//40 DIN
 // #define RG_GPIO_SND_AMP_ENABLE      18
