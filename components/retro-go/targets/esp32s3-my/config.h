@@ -70,7 +70,7 @@
 
 
 // Status LED
-#define RG_GPIO_LED                 GPIO_NUM_2//38
+//#define RG_GPIO_LED                 GPIO_NUM_2//38
 
 // SPI Display (back up working)
 #define RG_GPIO_LCD_CS              GPIO_NUM_14
@@ -88,7 +88,7 @@
 #define RG_GPIO_SDSPI_CS            GPIO_NUM_10
 
 // External I2S DAC
-#define RG_GPIO_SND_I2S_BCK         GPIO_NUM_43//41
-#define RG_GPIO_SND_I2S_WS          GPIO_NUM_44//42
-#define RG_GPIO_SND_I2S_DATA        GPIO_NUM_40//40
+#define RG_GPIO_SND_I2S_BCK         GPIO_NUM_44//41 BCLK
+#define RG_GPIO_SND_I2S_WS          GPIO_NUM_43//42 LRC
+#define RG_GPIO_SND_I2S_DATA        GPIO_NUM_40//40 DIN
 // #define RG_GPIO_SND_AMP_ENABLE      18

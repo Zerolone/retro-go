@@ -41,9 +41,11 @@ cd ~/esp/esp-idf
 
 cd /workspaces/retro-go/
 
-python rg_tool.py build-img --target=esp32s3-my
 
 -------------------------------
+python rg_tool.py build-img --target=esp32s3-my
+
+
 esptool --port COM15 -b 1152000 write_flash --flash_size detect 0x0 retro-go_619e7_esp32s3-devkit-c.img
 esptool --port COM15 -b 1152000 write_flash --flash_size detect 0x0 retro-go_619e7-dirty_esp32s3-devkit-c.img
 
@@ -81,8 +83,17 @@ esptool --port COM15 -b 2000000 write_flash --flash_size detect 0x0 esp32s3my-LC
 将LCD_DC改6,LCD_CLK改7，上改2，右改1
 esptool --port COM15 -b 2000000 write_flash --flash_size detect 0x0 esp32s3my-LCD-7-6.img
 
+#声音模块接线
+esptool --port COM15 -b 2000000 write_flash --flash_size detect 0x0 esp32s3my-Sound.img
 
+#声音模块接线修改后
+esptool --port COM15 -b 2000000 write_flash --flash_size detect 0x0 esp32s3my-Sound2.img
 
+#去掉状态灯
+esptool --port COM15 -b 2000000 write_flash --flash_size detect 0x0 esp32s3my-NoStatus.img
+
+#声音模块接线43-44交换
+esptool --port COM15 -b 2000000 write_flash --flash_size detect 0x0 esp32s3my-Sound3.img
 
 ------------
 folder 目录， 访问一下， 就会自动生成
